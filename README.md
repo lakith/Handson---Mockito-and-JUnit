@@ -45,3 +45,12 @@ public class AppModule extends AbstractModule {
     }
 }
 ```
+
+
+```java
+@Qualifier
+@Target({ FIELD, PARAMETER, METHOD })
+@Retention(RUNTIME)
+public @interface AuthToken {
+}
+```
