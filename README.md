@@ -4,7 +4,6 @@
 import com.google.inject.Provider;
 import com.guice.intro.annotations.*;
 import com.guice.intro.service.EmailService;
-
 import javax.inject.Inject;
 
 public class EmailServiceProvider implements Provider<EmailService> {
@@ -12,8 +11,7 @@ public class EmailServiceProvider implements Provider<EmailService> {
     private String emailServiceEndpoint;
     private boolean urlRewrite;
     private boolean skipVerification;
-
-
+    
     @Inject
     public EmailServiceProvider(
             @EmailServiceEndpoint String emailServiceEndpoint,
