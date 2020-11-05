@@ -3,29 +3,29 @@
 ```java
 import com.google.inject.Provider;
 import com.guice.intro.annotations.*;
-import com.guice.intro.service.EmailService;
+import com.guice.intro.service.SMSService;
 import javax.inject.Inject;
 
-public class EmailServiceProvider implements Provider<EmailService> {
+public class SMSServiceProvider implements Provider<SMSService> {
 
-    private String emailServiceEndpoint;
-    private boolean urlRewrite;
-    private boolean skipVerification;
-    
+    private String smsServiceEndpoint;
+    private String accountId;
+    private String authToken;
+
     @Inject
-    public EmailServiceProvider(
-            @EmailServiceEndpoint String emailServiceEndpoint,
-            @URLRewite boolean urlRewrite,
-            @SkipVerification boolean skipVerification) {
-        this.emailServiceEndpoint = emailServiceEndpoint;
-        this.urlRewrite = urlRewrite;
-        this.skipVerification = skipVerification;
+    public SMSServiceProvider(
+            @SMSServiceEndpoint String smsServiceEndpoint,
+            @AccountId String accountId,
+            @AuthToken String authToken) {
+        this.smsServiceEndpoint = smsServiceEndpoint;
+        this.accountId = accountId;
+        this.authToken = authToken;
     }
 
     @Override
-    public EmailService get() {
-        EmailService emailService = new EmailService(emailServiceEndpoint, urlRewrite, skipVerification);
-        return  emailService;
+    public SMSService get() {
+        SMSService smsService = new SMSService(smsServiceEndpoint, accountId, authToken);
+        return smsService;
     }
 }
 ```
