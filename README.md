@@ -1,7 +1,8 @@
 # Handson---Mockito-and-JUnit
 
 ```java
-Consumer consumer = injector.getInstance(Consumer.class);
+bind(Consumer.class).to(MyApplication.class);
+bind(MessageService.class).to(EmailServiceProvider.class);
 ```
 
 
