@@ -6,7 +6,7 @@ public class MyApplication implements Consumer {
     private MessageService emailService;
 
     @Inject
-    public  MyApplication (@Email MessageService messageService) {
+    public  MyApplication (MessageService messageService) {
         this.emailService = messageService;
     }
 
