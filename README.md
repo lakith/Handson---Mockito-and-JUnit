@@ -1,25 +1,24 @@
 # Handson---Mockito-and-JUnit
 
 ```java
-public class EmailService implements MessageService {
+import com.guice.intro.annotations.Email;
+import com.guice.intro.service.MessageService;
 
-    private String emailServiceEndpoint;
-    private boolean urlRewrite;
-    private boolean skipVerification;
+import javax.inject.Inject;
 
-    public EmailService(String emailServiceEndpoint, boolean urlRewrite, boolean skipVerification) {
-        this.emailServiceEndpoint = emailServiceEndpoint;
-        this.urlRewrite = urlRewrite;
-        this.skipVerification = skipVerification;
+public class MyApplication implements Consumer {
+
+    private MessageService emailService;
+
+    @Inject
+    public  MyApplication (@Email MessageService messageService) {
+        this.emailService = messageService;
     }
 
     @Override
-    public void sendMessage(String message, String receiver) {
-        //logic to send email
-        System.out.println("Email Sent to " + receiver + " with Message = " + message);
-        System.out.println(emailServiceEndpoint);
-        System.out.println(urlRewrite);
-        System.out.println(skipVerification);
+    public void processMessages(String message, String receiver) {
+        //do some msg validation, manipulation logic etc
+        this.emailService.sendMessage(message, receiver);
     }
 }
 ```
