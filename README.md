@@ -25,9 +25,5 @@ public class MyApplication implements Consumer {
 
 
 ```java
-@Qualifier
-@Target({ FIELD, PARAMETER, METHOD })
-@Retention(RUNTIME)
-public @interface AuthToken {
-}
+bind(MessageService.class).to(EmailService.class).in(Scopes.SINGLETON);
 ```
