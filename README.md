@@ -25,5 +25,15 @@ public class MyApplication implements Consumer {
 
 
 ```java
-bind(MessageService.class).to(EmailService.class).in(Scopes.SINGLETON);
+    @Provides
+    @Singleton
+    @Email
+    MessageService provideEmailService(
+            @EmailServiceEndpoint String emailServiceEndpoint,
+            @URLRewite Boolean urlRewrite,
+            @SkipVerification Boolean skipVerification
+            ) {
+        MessageService emailService = new EmailService(emailServiceEndpoint, urlRewrite, skipVerification);
+        return  emailService;
+    }
 ```
